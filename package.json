@@ -1,0 +1,25 @@
+{
+  "name": "word-guess-cli",
+  "version": "1.0.0",
+  "description": "word-guess, word, guess, hangman",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmawardi/WordGuess-CLi.git"
+  },
+  "keywords": [
+    "word-guess",
+    "word",
+    "guess",
+    "hangman"
+  ],
+  "author": "Dannar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmawardi/WordGuess-CLi/issues"
+  },
+  "homepage": "https://github.com/dmawardi/WordGuess-CLi#readme"
+}
