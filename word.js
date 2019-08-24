@@ -47,10 +47,10 @@ Word.prototype.checkGuessAgainstWord = function(charGuess){
 
 module.exports = Word;
 
-var word = new Word('Hallelujah');
+// var word = new Word('Hallelujah');
 
 
-console.log(word.guessWord);
-word.checkGuessAgainstWord('h');
+// console.log(word.guessWord);
+// word.checkGuessAgainstWord('h');
 
 
