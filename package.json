@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/dmawardi/WordGuess-CLi/issues"
   },
-  "homepage": "https://github.com/dmawardi/WordGuess-CLi#readme"
+  "homepage": "https://github.com/dmawardi/WordGuess-CLi#readme",
+  "dependencies": {
+    "inquirer": "^7.0.0"
+  }
 }
