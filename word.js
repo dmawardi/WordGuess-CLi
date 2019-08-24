@@ -3,6 +3,7 @@ var Letter = require('./letter.js');
 var Word = function(guessWord) {
     // Construct variables
     this.guessWord = guessWord;
+    this.lettersAlreadyGuessed = 0;
     // Declare wordArray and construct using function createWordArray (from prototype)
     this.wordArray = [];
     this.createWordArray(this.guessWord);
@@ -21,12 +22,22 @@ Word.prototype.createWordArray = function() {
 
 Word.prototype.returnGuessWordCurrentState = function() {
     var guessWordCurrentState = ''
+    var numberOfLettersAlreadyRevealed = 0;
     for (let i = 0; i < this.wordArray.length; i++) {
+        // Add the character to the string (this is determined by the boolean value)
         guessWordCurrentState += this.wordArray[i].toString();
+        // If the letter has already been revealed, add to the counter
+        if (this.wordArray[i].userHasGuessed) {
+            numberOfLettersAlreadyRevealed++;
+        }
     }
+    // Update word property with counts of letters already revealed
+    this.lettersAlreadyGuessed = numberOfLettersAlreadyRevealed;
+    // Return string for printing
     return guessWordCurrentState
 };
 
+// Function that checks guess against all letters in word
 Word.prototype.checkGuessAgainstWord = function(charGuess){
     for (let i = 0; i < this.wordArray.length; i++) {
         this.wordArray[i].checkGuessAgainstLetter(charGuess);
