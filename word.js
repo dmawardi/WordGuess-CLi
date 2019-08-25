@@ -7,12 +7,15 @@ var Word = function(guessWord) {
     // Declare wordArray and construct using function createWordArray (from prototype)
     this.wordArray = [];
     this.guessesRemaining = 12;
+    // createWord array and assign to wordArray variable
     this.createWordArray(this.guessWord);
 }
 
+// Create a word array from the input word
 Word.prototype.createWordArray = function() {
+    // Iterate through guessword
     for (let i = 0; i < this.guessWord.length; i++) {
-
+        // Assign letter at current index to variable
         let letterAtCurrentIndex = this.guessWord[i];
         // Use current letter to create new letter object
         let letter = new Letter(letterAtCurrentIndex);
@@ -21,6 +24,7 @@ Word.prototype.createWordArray = function() {
     }
 }
 
+// Prints out the current state of letters (guessed and unguessed)
 Word.prototype.returnGuessWordCurrentState = function() {
     // Initialize empty string for string concatenation
     var guessWordCurrentState = ''
@@ -72,4 +76,5 @@ Word.prototype.checkGuessAgainstWord = function(charGuess){
     console.log(this.returnGuessWordCurrentState());
 };
 
+// Export
 module.exports = Word;

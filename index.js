@@ -1,6 +1,6 @@
 var Word = require('./word');
 var inquirer = require('inquirer');
-var word = new Word('Break');
+var word = new Word('The Godfather');
 
 
 // Make sure character guess is a one letter character and not a number (passed to inquirer)

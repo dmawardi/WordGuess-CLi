@@ -1,6 +1,12 @@
 var Letter = function(characterValue){
     this.characterValue = characterValue;
-    this.userHasGuessed = false;
+    // If a space is detected, automatically set to guessed
+    if (this.characterValue == ' ') {
+        this.userHasGuessed = true;
+    } else {
+        // Else set to false
+        this.userHasGuessed = false;
+    }
 }
 
 // function that returns underlying character if the letter has been guessed or underscore if not
@@ -30,4 +36,5 @@ Letter.prototype.checkGuessAgainstLetter = function(guess) {
     }
 }
 
+// Export
 module.exports = Letter;
