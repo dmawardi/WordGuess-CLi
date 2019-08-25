@@ -22,7 +22,11 @@ Letter.prototype.checkGuessAgainstLetter = function(guess) {
     if (this.characterValue.toLowerCase() == guess.toLowerCase()) {
         // Set Letter's user guessed boolean to true
         this.userHasGuessed = true;
+        // Return true
+        return true
+        // Else, return false
     } else {
+        return false
     }
 }
 

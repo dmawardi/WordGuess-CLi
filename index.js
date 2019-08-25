@@ -2,11 +2,10 @@ var Word = require('./word');
 var inquirer = require('inquirer');
 var word = new Word('Break');
 
-var guessesRemaining = 12;
-
 
 // Make sure character guess is a one letter character and not a number (passed to inquirer)
 function validateCharacterGuess(guess) {
+    // If the length of input is not a single character and a non-number character, disallow
     if (guess.length == 1 && isNaN(guess)) {
         return true
     } else {
@@ -14,10 +13,11 @@ function validateCharacterGuess(guess) {
     }
 }
 
+// Takes a single character guess from user using Inquirer
 function takeCharacterGuess() {
-    return inquirer
+    inquirer
     .prompt([
-      /* Pass your questions in here */
+      // Only one input required from user, single character non-number
       {
           type: 'input',
           message: 'Guess a Letter: ',
@@ -30,30 +30,34 @@ function takeCharacterGuess() {
       word.checkGuessAgainstWord(answers.guessCharacter);
   
       // If all letters haven't been guessed and guesses remaining are greater than 0
-      if (!allLettersGuessedCheck(word) && guessesRemaining > 0) {
+      if (!allLettersGuessedCheck(word) && word.guessesRemaining > 0) {
           // Prompt for guess again
           takeCharacterGuess();
+
+        //   Else if the game is over, determine if win/lose
       } else {
-          if (allLettersGuessedCheck) {
-              console.log('You have won! Congratulations!')
-          } else {
-              console.log('You have lost! Better luck next time!')
+        //   If all letters guessed
+          if (allLettersGuessedCheck(word)) {
+            //   User has won
+              console.log('You have won! Congratulations!');
+            } else {
+                //   Else if guesses remaining is at 0, User has lost
+              console.log('You have lost! Better luck next time!');
           }
       }
   
     });
 }
+
+// function to quickly check if all the ltters have been checked
 function allLettersGuessedCheck(word) {
-    // for (let i = 0; i < word.length; i++) {
         // If the number of letters already guessed are less than word length
         if (word.lettersAlreadyGuessed < word.guessWord.length) {
-            console.log("User hasn't guessed all letters ");
             return false
         }
-        console.log('done with check')
-    // }
     // If loop completes without an unguessed letter
     return true
 }
 
+// Arguments begin here
 takeCharacterGuess();
