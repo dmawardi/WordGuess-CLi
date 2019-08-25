@@ -1,7 +1,7 @@
 var Letter = function(characterValue){
     this.characterValue = characterValue;
     // If a space is detected, automatically set to guessed
-    if (this.characterValue == ' ') {
+    if (this.characterValue == ' ' || this.characterValue == '-') {
         this.userHasGuessed = true;
     } else {
         // Else set to false

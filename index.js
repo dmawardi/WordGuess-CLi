@@ -1,7 +1,20 @@
 var Word = require('./word');
 var inquirer = require('inquirer');
-var word = new Word('The Godfather');
+var fs = require('fs');
+var movieDB = [];
+var word;
 
+
+
+
+
+
+// Selects a random item from an array
+function selectRandomWordFrom(array) {
+    // Generate random number between 0 and array length and return
+    let randomNumber = Math.round(Math.random()*array.length);
+    return array[randomNumber];
+}
 
 // Make sure character guess is a one letter character and not a number (passed to inquirer)
 function validateCharacterGuess(guess) {
@@ -60,4 +73,27 @@ function allLettersGuessedCheck(word) {
 }
 
 // Arguments begin here
-takeCharacterGuess();
+
+// Function that reads file then runs callback function
+function readFileThen(callback){
+    // Read movie database file
+    fs.readFile('./moviedb.txt', 'utf8', function(err, data) {
+        // if error, reject with it
+        if (err) throw reject(error);
+        // split the movie list by commas (csv)
+        movieDB = data.split(',');
+        // generate word
+        word = new Word(selectRandomWordFrom(movieDB));
+        // Diplay welcome message
+        console.log('\nWelcome to Movie Guesser! \n A movie will be randomly selected for you to guess!');
+        console.log('Guess the '+word.guessWord.length+ ' letter word');
+        console.log(word.returnGuessWordCurrentState());
+        
+        callback();
+    });
+    
+  }
+
+  readFileThen(function(){
+      takeCharacterGuess();
+  });
